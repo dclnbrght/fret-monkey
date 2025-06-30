@@ -1,0 +1,6 @@
+{
+    "liveServer.settings.multiRootWorkspaceName": "fret-monkey",
+    "liveServer.settings.mount": [
+        ["/src", "/"]
+    ]
+}

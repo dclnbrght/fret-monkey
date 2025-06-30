@@ -1,0 +1,22 @@
+<svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Head and face -->
+  <circle cx="32" cy="24" r="14" fill="#A97448"/>
+  <ellipse cx="24" cy="20" rx="4" ry="5" fill="#F1C27D"/>
+  <ellipse cx="40" cy="20" rx="4" ry="5" fill="#F1C27D"/>
+  <circle cx="24" cy="20" r="2" fill="#000"/>
+  <circle cx="40" cy="20" r="2" fill="#000"/>
+  <ellipse cx="32" cy="30" rx="6" ry="3" fill="#F1C27D"/>
+  <path d="M28 30 q4 4 8 0" stroke="#000" stroke-width="1.2" fill="none"/>
+
+  <!-- Ears -->
+  <ellipse cx="18" cy="24" rx="4" ry="6" fill="#C68642"/>
+  <ellipse cx="46" cy="24" rx="4" ry="6" fill="#C68642"/>
+
+  <!-- Body -->
+  <path d="M20 38 q12 10 24 0 v10 q-12 6 -24 0 z" fill="#8D5524"/>
+  <path d="M28 42 q4 6 8 0" stroke="#000" stroke-width="1" fill="none"/>
+
+  <!-- Arms -->
+  <path d="M20 40 q-10 4 -6 12" stroke="#8D5524" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M44 40 q10 4 6 12" stroke="#8D5524" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>
