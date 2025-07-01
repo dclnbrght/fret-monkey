@@ -7,17 +7,17 @@ export const CHROMATIC = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 
 export const BASE_RANGES = {
   'major': [
     {min: -1, max: 3},  // Position 1 (E shape)
-    {min: 2, max: 5},   // Position 2 (D shape)
-    {min: 4, max: 7},   // Position 3 (C shape)
-    {min: 6, max: 9},   // Position 4 (A shape)
-    {min: 8, max: 11},  // Position 5 (G shape)
+    {min: 1, max: 5},   // Position 2 (D shape)
+    {min: 3, max: 7},   // Position 3 (C shape)
+    {min: 6, max: 10},  // Position 4 (A shape)
+    {min: 8, max: 12},  // Position 5 (G shape)
   ],
   'minor': [
     {min: 0, max: 3},   // Position 1 (Am shape)
     {min: 2, max: 5},   // Position 2
-    {min: 4, max: 7},   // Position 3
-    {min: 6, max: 9},   // Position 4
-    {min: 8, max: 11},  // Position 5
+    {min: 4, max: 8},   // Position 3
+    {min: 7, max: 10},  // Position 4
+    {min: 9, max: 12},  // Position 5
   ],
   'major-pentatonic': [
     {min: -1, max: 3},  // Position 1

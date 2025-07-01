@@ -3,15 +3,14 @@ import { defaultSettings } from '../../settings.js';
 // Helper: list of scale/mode options
 const scaleModeOptions = [
   { value: 'all', label: 'All (Chromatic)' },
-  { value: 'single-note', label: 'Single Note (Highlight Key)' },
+  { value: 'single-note', label: 'Single Note' },
   { value: 'major-ionian', label: 'Major (Ionian)' },
   { value: 'major-dorian', label: 'Dorian' },
   { value: 'major-phrygian', label: 'Phrygian' },
   { value: 'major-lydian', label: 'Lydian' },
   { value: 'major-mixolydian', label: 'Mixolydian' },
-  { value: 'major-aeolian', label: 'Aeolian (Minor)' },
-  { value: 'major-locrian', label: 'Locrian' },
   { value: 'minor-aeolian', label: 'Minor (Aeolian)' },
+  { value: 'major-locrian', label: 'Locrian' },
   { value: 'major-pentatonic', label: 'Major Pentatonic' },
   { value: 'minor-pentatonic', label: 'Minor Pentatonic' },
   { value: 'blues', label: 'Blues' },
@@ -100,7 +99,7 @@ class FilterBar extends HTMLElement {
           }
         }
       </style>
-      <button class="toggle-btn" id="toggleBtn" aria-label="Toggle filter bar">&#9776; Filters</button>
+      <button class="toggle-btn" id="toggleBtn" aria-label="Toggle settings bar">&#x25BC; Settings</button>
       <div class="filter-bar open" id="filterBar">
         <label>Scale/Mode:
           <select id="scaleMode">
@@ -151,7 +150,7 @@ class FilterBar extends HTMLElement {
     const toggleBtn = this.shadowRoot.getElementById('toggleBtn');
     filterBar.classList.toggle('open', open);
     filterBar.classList.toggle('closed', !open);
-    toggleBtn.innerHTML = open ? '&#10006; Hide' : '&#9776; Filters';
+    toggleBtn.innerHTML = open ? '&#x25B2; Settings' : '&#x25BC; Settings';
 
     this.shadowRoot.getElementById('key').value = key;
     this.shadowRoot.getElementById('scaleMode').value = scaleMode;
@@ -209,7 +208,7 @@ class FilterBar extends HTMLElement {
       } else {
         this.classList.remove('closed');
       }
-      toggleBtn.innerHTML = open ? '&#10006; Hide' : '&#9776; Filters';
+      toggleBtn.innerHTML = open ? '&#x25B2; Settings' : '&#x25BC; Settings';
       saveFilters(); // Save open state on toggle
     });
     this.shadowRoot.getElementById('scaleMode').addEventListener('change', () => {
