@@ -17,6 +17,17 @@ const scaleModeOptions = [
 ];
 
 class FilterBar extends HTMLElement {
+  // Helper to show/hide complimentary-chords based on scaleMode
+  _updateComplimentaryChordsDisplay(mode) {
+    const chordsComp = document.querySelector('complimentary-chords');
+    if (chordsComp) {
+      if (mode === 'all' || mode === 'single-note') {
+        chordsComp.style.display = 'none';
+      } else {
+        chordsComp.style.display = '';
+      }
+    }
+  }
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -31,12 +42,18 @@ class FilterBar extends HTMLElement {
           font-size: 1rem;
           box-shadow: 0 1px 4px rgba(0,0,0,0.05);
         }
+        select:disabled, input[type="checkbox"]:disabled {
+          background: #666!important;
+          color: #ccc !important;
+          opacity: 0.7;
+          cursor: not-allowed;
+        }
           :host(.closed) {
           padding: 0 !important;
         }
         .toggle-btn {
           position: absolute;
-          top: 1.3rem;
+          top: 1.4rem;
           right: 1rem;
           z-index: 2;
           background: #222;
@@ -44,7 +61,7 @@ class FilterBar extends HTMLElement {
           border: none;
           border-radius: 4px;
           padding: 0.2rem 0.6rem 0.3rem 0.6rem;
-          font-size: 1.1rem;
+          font-size: 1rem;
           cursor: pointer;
           transition: background 0.2s;
         }
@@ -88,7 +105,7 @@ class FilterBar extends HTMLElement {
         @media (max-width: 600px) {
           .toggle-btn {
             right: 0.5rem;
-            top: 1rem;
+            top: 1.1rem;
           }
           .filter-bar {
             flex-direction: row;
@@ -216,6 +233,7 @@ class FilterBar extends HTMLElement {
       const keyDropdown = this.shadowRoot.getElementById('key');
       const positionDropdown = this.shadowRoot.getElementById('position');
       const toggleAll = this.shadowRoot.getElementById('toggle-all-markers');
+      this._updateComplimentaryChordsDisplay(scaleModeValue);
       if (scaleModeValue === 'all') {
         keyDropdown.disabled = true;
         positionDropdown.disabled = true;
@@ -233,6 +251,7 @@ class FilterBar extends HTMLElement {
       }
     });
     // On load, set disables for special modes
+    this._updateComplimentaryChordsDisplay(scaleMode);
     if (scaleMode === 'all') {
       this.shadowRoot.getElementById('key').disabled = true;
       this.shadowRoot.getElementById('position').disabled = true;

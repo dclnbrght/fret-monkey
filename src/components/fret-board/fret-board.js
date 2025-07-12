@@ -34,7 +34,7 @@ class FretBoard extends HTMLElement {
           position: absolute;
           left: 50%;
           transform: translateX(-50%);
-          background: #222;
+          background: #888;
           border-radius: 50%;
           box-shadow: 0 1px 6px rgba(0,0,0,0.12);
           width: 0.9em;
