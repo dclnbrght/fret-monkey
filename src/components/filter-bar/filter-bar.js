@@ -31,6 +31,7 @@ class FilterBar extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+
     this.shadowRoot.innerHTML = `
       <style>
         :host {
@@ -233,7 +234,9 @@ class FilterBar extends HTMLElement {
       const keyDropdown = this.shadowRoot.getElementById('key');
       const positionDropdown = this.shadowRoot.getElementById('position');
       const toggleAll = this.shadowRoot.getElementById('toggle-all-markers');
+      
       this._updateComplimentaryChordsDisplay(scaleModeValue);
+      
       if (scaleModeValue === 'all') {
         keyDropdown.disabled = true;
         positionDropdown.disabled = true;
@@ -242,8 +245,7 @@ class FilterBar extends HTMLElement {
       } else if (scaleModeValue === 'single-note') {
         keyDropdown.disabled = false;
         positionDropdown.disabled = true;
-        toggleAll.checked = true;
-        toggleAll.disabled = true;
+        toggleAll.disabled = false;
       } else {
         keyDropdown.disabled = false;
         positionDropdown.disabled = false;
@@ -252,6 +254,7 @@ class FilterBar extends HTMLElement {
     });
     // On load, set disables for special modes
     this._updateComplimentaryChordsDisplay(scaleMode);
+    
     if (scaleMode === 'all') {
       this.shadowRoot.getElementById('key').disabled = true;
       this.shadowRoot.getElementById('position').disabled = true;
@@ -260,8 +263,11 @@ class FilterBar extends HTMLElement {
     } else if (scaleMode === 'single-note') {
       this.shadowRoot.getElementById('key').disabled = false;
       this.shadowRoot.getElementById('position').disabled = true;
-      this.shadowRoot.getElementById('toggle-all-markers').checked = true;
-      this.shadowRoot.getElementById('toggle-all-markers').disabled = true;
+      this.shadowRoot.getElementById('toggle-all-markers').disabled = false;
+      // Only set checked state if not already set in localStorage
+      if (typeof saved.showAllNotes !== 'boolean') {
+        this.shadowRoot.getElementById('toggle-all-markers').checked = false;
+      }
     }
   }
 }

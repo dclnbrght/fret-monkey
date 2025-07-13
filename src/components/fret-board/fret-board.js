@@ -149,7 +149,8 @@ class FretBoard extends HTMLElement {
     const min = 6;
     const max = 94;
 
-    const showAll = scaleMode === 'all' || scaleMode === 'single-note';
+    const showAll = scaleMode === 'all';
+    const isSingleNote = scaleMode === 'single-note';
     const allScaleNotes = getScaleNotes(key, scaleMode);
     const positionNotePositions = posNum ? getScaleNotePositions(key, scaleMode, posNum) : [];
     const positionLookup = new Set(positionNotePositions.map(p => `${p.string}_${p.fret}`));
@@ -163,20 +164,39 @@ class FretBoard extends HTMLElement {
         const note = chromatic[noteIdx];
         const isScaleNote = allScaleNotes.includes(note);
         const isInPosition = posNum && positionLookup.has(`${s}_${fret}`);
-        const show = showAll || isScaleNote || this.showAllMarkers;
+        
+        // Determine if we should show this note
+        let show = false;
+        if (showAll) {
+          show = true;
+        } else if (isSingleNote) {
+          show = note === key || (this.showAllMarkers && note !== key);
+        } else {
+          show = isScaleNote || this.showAllMarkers;
+        }
+        
         if (!show) continue;
+
         let y = fret === 0 ? -18 : (fretPositions[fret] + fretPositions[fret - 1]) / 2 - 8;
         const percent = min + ((max - min) * s) / (stringCount - 1);
         const marker = document.createElement('note-marker');
         marker.setAttribute('note', note);
-        if (scaleMode === 'single-note' && note === key) {
-          marker.setAttribute('highlighted', '');
+        
+        // Handle highlighting in single-note mode
+        if (isSingleNote) {
+          if (note === key) {
+            marker.setAttribute('highlighted', '');
+          } else if (this.showAllMarkers) {
+            // Other notes are shown dimmed when toggle is on
+            marker.setAttribute('dimmed', '');
+          }
         } else {
           if (isScaleNote) marker.setAttribute('in-scale', '');
           if (isScaleNote && isInPosition) {
             marker.setAttribute('in-position', '');
           }
         }
+        
         marker.style.top = `${y}px`;
         marker.style.left = `calc(${percent}% - 0.56em)`;
         marker.style.position = 'absolute';
