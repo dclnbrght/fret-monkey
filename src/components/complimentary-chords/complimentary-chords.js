@@ -37,17 +37,17 @@ class ComplimentaryChords extends HTMLElement {
           color: #aaa;
         }
         .chord.major {
-          background: #2a3d2e !important;
-          border: 1.5px solid #4caf50 !important;
+          background: #2e2703 !important;
+          border: 2px solid #fee500 !important;
         }
         .chord.minor {
-          background: #2a2a3d !important;
-          border: 1.5px solid #2196f3 !important;
+          background: #2d1c03 !important;
+          border: 1.5px solid #c6821b !important;
         }
         .chord.dim {
-          background: #3d2a2a !important;
-          border: 1.5px solid #ff9800 !important;
-          color: #aaa !important;
+          background: #291b1b !important;
+          border: 1.5px solid #6c392d !important;
+          color: #bbb !important;
         }
         .chord-root {
           font-size: 0.9em;

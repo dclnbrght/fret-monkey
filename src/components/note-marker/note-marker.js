@@ -33,7 +33,7 @@ class NoteMarker extends HTMLElement {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: ${highlighted ? '#ffeb3b' : inPosition ? '#f7b212' : inScale ? '#ffeb3b' : '#444'};
+          background: ${highlighted ? '#ffb908' : inPosition ? '#ffdc15' : inScale ? '#ffb908' : '#444'};
           border: 0.06rem solid #fff;
           color: ${highlighted || inScale ? '#222' : '#fff'};
           font-weight: bold;
